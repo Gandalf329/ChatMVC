@@ -10,9 +10,9 @@ namespace SignalRMVC.SignalR
         {
             db = context;
         }
-        public async Task Send(string message, string userName)
+        public async Task Send(string message, string userName, string receiverName)
         {
-            Message message1 = new Message { UserName = userName, MessageText = message };
+            Message message1 = new Message { ReceiverName = receiverName, UserName = userName, MessageText = message };
             await db.Messages.AddAsync(message1);
             await db.SaveChangesAsync();
             await Clients.All.SendAsync("Receive", message, userName);
