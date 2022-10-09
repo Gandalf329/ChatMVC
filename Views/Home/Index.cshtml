@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SignalRMVC.Models.Message>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (User.Identity.IsAuthenticated) { 
+    <p>Working</p>
+    <p>@User.Identity.Name</p>
+}else{
+    <p>Now working!</p>
+}
+
+<div>
+        Введите ваш ник:<br />
+        <input id="userName" type="text" /><br /><br />
+        Введите сообщение:<br />
+        <input type="text" id="message" /><br /><br />
+        <input type="button" id="sendBtn" value="Отправить" disabled="disabled" />
+    </div>
+    <div id="chatroom">
+        @foreach (var item in Model)
+        {
+            <p>
+                <b>@item.UserName :</b>
+            @item.MessageText
+            </p>
+        }
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script>
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .build();
+
+        document.getElementById("sendBtn").addEventListener("click", function () {
+            const userName = document.getElementById("userName").value;   // получаем введенное имя
+            const message = document.getElementById("message").value;
+
+            hubConnection.invoke("Send", message, userName) // отправка данных серверу
+                .catch(function (err) {
+                    return console.error(err.toString());
+                });
+        });
+        // получение данных с сервера
+        hubConnection.on("Receive", function (message, userName) {
+
+            // создаем элемент <b> для имени пользователя
+            const userNameElem = document.createElement("b");
+            userNameElem.textContent = `${userName}: `;
+
+            // создает элемент <p> для сообщения пользователя
+            const elem = document.createElement("p");
+            elem.appendChild(userNameElem);
+            elem.appendChild(document.createTextNode(message));
+
+            // добавляем новый элемент в самое начало
+            // для этого сначала получаем первый элемент
+            const firstElem = document.getElementById("chatroom").firstChild;
+            document.getElementById("chatroom").insertBefore(elem, firstElem);
+        });
+
+        hubConnection.start()
+            .then(function () {
+                document.getElementById("sendBtn").disabled = false;
+            })
+            .catch(function (err) {
+                return console.error(err.toString());
+            });
+    </script>
