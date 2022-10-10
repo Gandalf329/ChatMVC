@@ -25,12 +25,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
+                        
                         @if (User.Identity.IsAuthenticated){
-                            <li class="nav-link">
-                                <p>@User.Identity.Name</p>
-                            </li>
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllUsers">AllUsers</a>
+                            </li>
+                            <li class="nav-link">
+                                <p align="left">@User.Identity.Name</p>
+                            </li>
+                            <li class="nav-item" align="left">
                                 <form method="post" asp-controller="Account" asp-action="Logout">
                                     <input type="submit" value="Выход" />
                                 </form>
@@ -39,10 +42,10 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
 
                         }

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<SignalRMVC.Models.User>
+@{
+    ViewData["Title"] = "All users";
+}
+
+@foreach (var item in Model)
+{
+    <a asp-area="" asp-controller="Home" asp-action="ViewUserMessages" asp-route-name2="@User?.Identity?.Name" asp-route-name="@item.UserName">@item.UserName</a>
+}
