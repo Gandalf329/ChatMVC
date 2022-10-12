@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SignalRMVC.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="headLa">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SignalRMVC</a>
@@ -20,32 +23,32 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav_item_text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav_item_text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         
                         @if (User.Identity.IsAuthenticated){
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllUsers">AllUsers</a>
+                                <a class="nav_item_text" asp-area="" asp-controller="Home" asp-action="AllUsers">AllUsers</a>
                             </li>
-                            <li class="nav-link">
-                                <p align="left">@User.Identity.Name</p>
+                            <li class="nav-item">
+                                <a class="nav_item_text nav_item_name" align="left">@User.Identity.Name</a>
                             </li>
-                            <li class="nav-item" align="left">
+                            <li class="nav_item_button" align="left">
                                 <form method="post" asp-controller="Account" asp-action="Logout">
-                                    <input type="submit" value="Выход" />
+                                    <input class="exit_button" type="submit" value="Выход" />
                                 </form>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                                <a class="nav_item_text" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                                <a class="nav_item_text" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
 
                         }

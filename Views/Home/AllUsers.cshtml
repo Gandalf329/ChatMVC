@@ -5,5 +5,9 @@
 
 @foreach (var item in Model)
 {
-    <a asp-area="" asp-controller="Home" asp-action="ViewUserMessages" asp-route-name2="@User?.Identity?.Name" asp-route-name="@item.UserName">@item.UserName</a>
+    @if (item.UserName != User?.Identity?.Name)
+    {
+        <a asp-area="" asp-controller="home" asp-action="viewusermessages" asp-route-name2="@User?.Identity?.Name" asp-route-name="@item.UserName">@item.UserName</a>
+    }
+    
 }
