@@ -3,11 +3,54 @@
     ViewData["Title"] = "All users";
 }
 
-@foreach (var item in Model)
-{
-    @if (item.UserName != User?.Identity?.Name)
-    {
-        <a asp-area="" asp-controller="home" asp-action="viewusermessages" asp-route-name2="@User?.Identity?.Name" asp-route-name="@item.UserName">@item.UserName</a>
-    }
+
+<div class="all_main">
+    <div class="users_list">
+        @foreach (var item in Model)//document.getElementById('inlineFrameExample').contentWindow.document.getElementsByClassName('headLa')[0].style.display = 'none';
+        {
+            @if (item.UserName != User?.Identity?.Name)
+            {
+                <div class="user_content"> 
+                 
+                    <a class="user_url" asp-area="" asp-controller="home" asp-action="viewusermessages" asp-route-name2="@User?.Identity?.Name" asp-route-name="@item.UserName">@item.UserName</a>
+                </div>
+            }
     
-}
+        }
+    </div>
+    <div class="user_messages">
+        <iframe id="inlineFrameExample"
+                title="Chat"
+                width="1096"
+                height="600"
+                frameborder="1"
+                allowfullscreen="true"
+                src="https://localhost:7017/home/viewusermessages?name2=Nikita&name=Gandalf329">
+        </iframe>
+    </div>
+</div>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        var iframe = document.getElementsByTagName('iframe')[0];
+        iframe.onload = function () {
+            var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            var iframeStyle = iframeDoc.createElement('style');
+            var iframeHead = iframeDoc.getElementsByTagName('head')[0];
+            var iframeBody = iframeDoc.getElementsByTagName('body')[0];
+            iframeStyle.innerHTML = '.headLa {display: none;}';
+            iframeHead.appendChild(iframeStyle);
+        }
+        let btnsUsers = document.querySelectorAll('.user_url');
+        btnsUsers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                let name = btn.getAttribute("href");
+                let iframe = document.getElementById('inlineFrameExample');
+                let url = `https://localhost:7017`+name;
+                iframe.setAttribute('src', url);
+            })
+        })
+    });
+</script>

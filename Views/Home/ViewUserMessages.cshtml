@@ -48,7 +48,7 @@
         // создает элемент <p> для сообщения пользователя
         const elem = document.createElement("p");
         elem.appendChild(userNameElem);
-        
+        elem.appendChild(document.createTextNode(message));
 
         // добавляем новый элемент в самое начало
         // для этого сначала получаем первый элемент

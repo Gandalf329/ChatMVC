@@ -17,6 +17,7 @@ html {
     position: relative;
     min-height: 100%;
     line-height: 1.2;
+    
 }
 
 body {
@@ -79,3 +80,32 @@ body {
     .exit_button:hover {
         transform: scale(1.025);
     }
+.all_main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 600px;
+
+}
+.user_content {
+    border: 1px solid black;
+    background-color:lightslategrey;
+    
+}
+.user_url {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+.users_list {
+    flex: 0 0 200px;
+    background-color: #FF9999;
+}
+.user_messages {
+    flex: 1 1 25%;
+    background-color: #9999FF;
+}
