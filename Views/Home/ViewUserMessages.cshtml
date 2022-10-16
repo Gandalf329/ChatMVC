@@ -2,19 +2,21 @@
 @{
     ViewData["Title"] = "User Messages";
 }
-<div>
-    Введите сообщение:<br />
-    <input type="text" id="message" /><br /><br />
-    <input type="button" id="sendBtn" value="Отправить" disabled="disabled" />
-</div>
-<div id="chatroom">
-@foreach (var item in Model.Reverse())
-{
-    <p>
-        <b>@item.UserName :</b>
-        @item.MessageText
-    </p>
-}
+<div class="messages_content">
+    <div>
+        Введите сообщение:<br />
+        <input type="text" id="message" /><br /><br />
+        <input type="button" id="sendBtn" value="Отправить" disabled="disabled" />
+    </div>
+    <div id="chatroom">
+    @foreach (var item in Model.Reverse())
+    {
+        <p>
+            <b>@item.UserName :</b>
+            @item.MessageText
+        </p>
+    }
+    </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
 <script>

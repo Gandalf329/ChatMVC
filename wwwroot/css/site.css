@@ -23,7 +23,7 @@ html {
 body {
     margin-bottom: 60px;
     font-family: Roboto,sans-serif;
-    
+    background-color: #eaeaea;
 }
 .headLa {
     background-color: rgb(34, 34, 34);
@@ -90,8 +90,7 @@ body {
 }
 .user_content {
     border: 1px solid black;
-    background-color:lightslategrey;
-    
+    background-color: #e0e6ec;
 }
 .user_url {
     text-decoration: none;
@@ -103,9 +102,55 @@ body {
 }
 .users_list {
     flex: 0 0 200px;
-    background-color: #FF9999;
+    background-color: #DAE8EC;
 }
 .user_messages {
     flex: 1 1 25%;
     background-color: #9999FF;
 }
+.messages_content {
+
+    background-color: #fff;
+}
+.index_content {
+    width: 100px;
+}
+.buttonInd_Login {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: lightyellow;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    text-decoration: none;
+}
+.buttonInd_Reg {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: lightsteelblue;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    text-decoration: none;
+}
+    .buttonInd_Reg:hover, .buttonInd_Login:hover {
+        text-decoration: none;
+        color: #212529;
+        transform: scale(1.025);
+    }

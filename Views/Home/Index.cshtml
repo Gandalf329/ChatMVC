@@ -8,6 +8,9 @@
     <p>Select the user you want in "All users" and send a message</p>
 }else{
     <p>Please log in or register!</p>
-    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
-    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+    <div class="index_content">
+        <a class="buttonInd_Login" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+        <a class="buttonInd_Reg" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+    </div>
+    
 }
