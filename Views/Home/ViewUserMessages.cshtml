@@ -3,10 +3,9 @@
     ViewData["Title"] = "User Messages";
 }
 <div class="messages_content">
-    <div>
-        Введите сообщение:<br />
-        <input type="text" id="message" /><br /><br />
-        <input type="button" id="sendBtn" value="Отправить" disabled="disabled" />
+    <div class="send_message">
+        <input type="text" id="message" class="input_message" />
+        <input type="button" id="sendBtn" class="btn_message" value="Отправить" disabled="disabled" />
     </div>
     <div id="chatroom">
     @foreach (var item in Model.Reverse())

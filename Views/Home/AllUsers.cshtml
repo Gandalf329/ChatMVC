@@ -39,7 +39,8 @@
             var iframeStyle = iframeDoc.createElement('style');
             var iframeHead = iframeDoc.getElementsByTagName('head')[0];
             var iframeBody = iframeDoc.getElementsByTagName('body')[0];
-            iframeStyle.innerHTML = '.headLa {display: none;}';
+            iframeStyle.innerHTML = 'body {background-color: #fff;} .headLa {display: none;} .footer {display: none;}';
+
             iframeHead.appendChild(iframeStyle);
         }
         let btnsUsers = document.querySelectorAll('.user_url');
