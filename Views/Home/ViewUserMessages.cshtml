@@ -4,7 +4,7 @@
 }
 <div class="messages_content">
     <div class="send_message">
-        <input type="text" id="message" class="input_message" />
+        <input type="text" id="message" name="message" class="input_message" />
         <input type="button" id="sendBtn" class="btn_message" value="Отправить" disabled="disabled" />
     </div>
     <div id="chatroom">
@@ -28,6 +28,14 @@
     const hubConnection = new signalR.HubConnectionBuilder()
         .withUrl("/chat")
         .build();
+    
+    document.getElementById("message")
+        .addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("sendBtn").click();
+        }
+    });
 
     document.getElementById("sendBtn").addEventListener("click", function () {
         const userName = searchParams.get("name2");   
