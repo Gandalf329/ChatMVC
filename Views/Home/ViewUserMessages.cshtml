@@ -46,6 +46,7 @@
             .catch(function (err) {
                 return console.error(err.toString());
             });
+        document.getElementById("message").value = "";
     });
     // получение данных с сервера
     hubConnection.on("Receive", function (message, userName, receiverName) {
