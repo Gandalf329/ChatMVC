@@ -2,6 +2,7 @@
 using SignalRMVC.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Xml.Linq;
+using System;
 
 namespace SignalRMVC.SignalR
 {
@@ -16,7 +17,9 @@ namespace SignalRMVC.SignalR
         }
         public async Task Send(string message, string userName, string receiverName)
         {
-            Message message1 = new Message { ReceiverName = receiverName, UserName = userName, MessageText = message };
+            DateTime date1 = DateTime.Now;
+            string date = date1.ToString("dd.MM.yyyy HH:mm");
+            Message message1 = new Message { ReceiverName = receiverName, UserName = userName, MessageText = message , Date = date};
             await db.Messages.AddAsync(message1);
             await db.SaveChangesAsync();
 
@@ -24,7 +27,7 @@ namespace SignalRMVC.SignalR
             string receiver = user.Id;
 
             //await Clients.All.SendAsync("Receive", message, userName);
-            await Clients.Users(Context.UserIdentifier, receiver).SendAsync("Receive", message, userName);
+            await Clients.Users(Context.UserIdentifier, receiver).SendAsync("Receive", message, userName, date);
 
         }
     }

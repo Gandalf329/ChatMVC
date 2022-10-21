@@ -13,6 +13,7 @@
         <p>
             <b>@item.UserName :</b>
             @item.MessageText
+            <b class="dateMessage">@item.Date</b>
         </p>
     }
     </div>
@@ -49,17 +50,24 @@
         document.getElementById("message").value = "";
     });
     // получение данных с сервера
-    hubConnection.on("Receive", (message, user) => {
+    hubConnection.on("Receive", (message, user, date) => {
 
         // создаем элемент <b> для имени пользователя
         const userNameElem = document.createElement("b");
         userNameElem.textContent = `${user}: `;
-
+        // создаем элемент <b> для даты
+        const elemDate = document.createElement("b");
+        elemDate.className = "dateMessage";
+        elemDate.textContent = ` ${date}: `;
+        console.log(date);
         // создает элемент <p> для сообщения пользователя
         const elem = document.createElement("p");
         elem.appendChild(userNameElem);
-        elem.appendChild(document.createTextNode(message));
 
+        elem.appendChild(document.createTextNode(message));
+        elem.appendChild(elemDate);
+        
+        
         const firstElem = document.getElementById("chatroom").firstChild;
         document.getElementById("chatroom").insertBefore(elem, firstElem);
     });

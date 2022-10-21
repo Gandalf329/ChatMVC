@@ -8,5 +8,6 @@ namespace SignalRMVC.Models
         public string? UserName { get; set; }
         public string? ReceiverName { get; set; }
         public string? MessageText { get; set; }
+        public string? Date { get; set; }
     }
 }
