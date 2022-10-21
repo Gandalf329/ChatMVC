@@ -49,23 +49,36 @@
         document.getElementById("message").value = "";
     });
     // получение данных с сервера
-    hubConnection.on("Receive", function (message, userName, receiverName) {
+    hubConnection.on("Receive", (message, user) => {
 
         // создаем элемент <b> для имени пользователя
         const userNameElem = document.createElement("b");
-        userNameElem.textContent = `${userName}: `;
+        userNameElem.textContent = `${user}: `;
 
         // создает элемент <p> для сообщения пользователя
         const elem = document.createElement("p");
         elem.appendChild(userNameElem);
         elem.appendChild(document.createTextNode(message));
 
-        // добавляем новый элемент в самое начало
-        // для этого сначала получаем первый элемент
         const firstElem = document.getElementById("chatroom").firstChild;
         document.getElementById("chatroom").insertBefore(elem, firstElem);
     });
+    // function (message, userName, receiverName) {
 
+    //    // создаем элемент <b> для имени пользователя
+    //    const userNameElem = document.createElement("b");
+    //    userNameElem.textContent = `${userName}: `;
+
+    //    // создает элемент <p> для сообщения пользователя
+    //    const elem = document.createElement("p");
+    //    elem.appendChild(userNameElem);
+    //    elem.appendChild(document.createTextNode(message));
+
+    //    // добавляем новый элемент в самое начало
+    //    // для этого сначала получаем первый элемент
+    //    const firstElem = document.getElementById("chatroom").firstChild;
+    //    document.getElementById("chatroom").insertBefore(elem, firstElem);
+    
     hubConnection.start()
         .then(function () {
             document.getElementById("sendBtn").disabled = false;
