@@ -21,6 +21,10 @@ namespace SignalRMVC.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> DefaultMessage()
+        {
+            return View();
+        }
         public async Task<IActionResult> ViewUserMessages(string name, string name2)
         {
             User user = await _userManager.FindByNameAsync(name);
