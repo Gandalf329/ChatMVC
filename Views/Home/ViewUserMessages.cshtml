@@ -7,7 +7,7 @@
         <input type="text" id="message" name="message" class="input_message" />
         <input type="button" id="sendBtn" class="btn_message" value="Отправить" disabled="disabled" />
     </div>
-    <div id="chatroom">
+    <div id="chatroom" class="chatroom">
     @foreach (var item in Model.Reverse())
     {
         <p>
@@ -19,6 +19,7 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
     const paramsString = document.location.search; // ?name2=Nikita&name=Gandalf329
     const searchParams = new URLSearchParams(paramsString);
@@ -95,6 +96,18 @@
             return console.error(err.toString());
         });
 
+    $(function () { //temporarily
+        $(".chatroom").each(function () {
+            let $p = $(this).find("p");
+            if ($p.length <= 20) return;
 
+            $p.slice(20).hide();
+            $(this).append('<a class="js-show">Еще ' + ($p.length - 20) + '...</a>');
+        });
+
+        $(".chatroom").on("click", ".js-show", function () {
+            $(this).siblings("p").show().end().remove();
+        });
+    });
 
 </script>
