@@ -34,7 +34,7 @@
                                 <a class="nav_item_text" asp-area="" asp-controller="Home" asp-action="AllUsers">AllUsers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav_item_text nav_item_name" align="left">@User.Identity.Name</a>
+                                <a class="nav_item_text nav_item_name" asp-area="" asp-controller="Users" asp-action="UserProfile" asp-route-name="@User.Identity.Name" method="post" align="left">@User.Identity.Name</a>
                             </li>
                             <li class="nav_item_button" align="left">
                                 <form method="post" asp-controller="Account" asp-action="Logout">

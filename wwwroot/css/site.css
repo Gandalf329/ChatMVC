@@ -42,6 +42,7 @@ body {
     padding: .5rem 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
+    padding-top: 14px;
     text-decoration: none;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
