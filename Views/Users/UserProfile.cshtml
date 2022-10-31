@@ -3,5 +3,10 @@
     ViewData["Title"] = "Profile";
 }
 <h1>@Model.UserName</h1>
-
+<div class="edit_profile">
+    <form method="post" asp-controller="Users" asp-action="EditProfile" >
+        <input name='name' />
+        <input type="submit" value="Edit" />
+    </form>
+</div>
     
